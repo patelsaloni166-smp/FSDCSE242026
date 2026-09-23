@@ -19,5 +19,5 @@ export default ICard
 
 
 
-
+//props->transfer data from parent component to child component
 
