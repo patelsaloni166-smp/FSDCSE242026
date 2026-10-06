@@ -9,6 +9,7 @@ import MyState from './components/MyState'
 import ColorChange from './components/ColorChange' 
 import Set from './components/Set'
 import ImageManipulation from './components/ImageManipulation'
+import MyUseEffect from './components/MyUseEffect'
 function App() {
  
 
@@ -19,7 +20,8 @@ function App() {
       {/* <MyState/> */}
       {/* <ColorChange/> */}
       {/* <Set/> */}
-      <ImageManipulation/>
+      {/* <ImageManipulation/> */}
+      <MyUseEffect/>
     </div>
   )
 }
