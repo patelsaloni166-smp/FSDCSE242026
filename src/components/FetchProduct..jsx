@@ -1,11 +1,15 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 
-export default function FetchProduct() {
+ function FetchProduct() {
+  const [data,setData]=useState([]);
 
     useEffect(()=>{
-        function fetchData(){
+       async function fetchData(){
             try{
-            fetch("https://dummyjson.com/products")
+          const response=await  fetch("https://dummyjson.com/products")
+          const resdata=await response.json();
+          console.log(resdata);
+          setData(resdata.products);
             }catch(e){
                 console.log("Error is:"+e)
             }finally{
@@ -13,9 +17,44 @@ export default function FetchProduct() {
             }
         }
         fetchData();
-    })
+    },[])
+    
+    // function cartData(element){
+
+    // }
+
 
   return (
-    <div></div>
-  )
+<div>
+<h1>Fetch Product</h1>
+
+  {data.map((ele) => (
+    <div
+      key={ele.id}
+      style={{
+        border: '1px solid #ccc',
+        margin: '10px',
+        padding: '10px'
+      }}
+    >
+      <img
+        src={ele.images[0]}
+        alt={ele.title}
+        height="50"
+        width="50"
+      />
+
+      <h2>ID: {ele.id}</h2>
+      <h2>Title: {ele.title}</h2>
+      <p>Description: {ele.description}</p>
+      <h2>Category: {ele.category}</h2>
+      <h2>Price: ${ele.price}</h2>
+
+      <button>Add to Cart</button>
+    </div>
+  ))}
+</div>
+  );
 }
+
+export default FetchProduct
